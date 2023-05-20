@@ -7,4 +7,4 @@ https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?v
 2- Run the queries to create your DWH Fact and Dimensions from the folder "Queries" I uploaded.
 
 3- Create connections to your source and destination DWH.
-4- Run the Package.
+4- Run the Packages.
