@@ -1,0 +1,515 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/11/2023 11:11:54 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-QAQDED1"
+  DTS:CreatorName="DESKTOP-QAQDED1\MedhatElassi"
+  DTS:DTSID="{3278BF0F-EFD7-469D-8731-3906DF7DF1BC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{2EED9675-CABD-4DE9-9C30-BB7E8FCC9E68}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.AdventureWorksDW2019]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F7CBC290-E340-4641-A480-57885880B460}"
+      DTS:ObjectName="LocalHost.AdventureWorksDW2019">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AdventureWorksDW2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{F7CBC290-E340-4641-A480-57885880B460}LocalHost.AdventureWorksDW2019;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.ME_AdventureWorksDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E30064F3-069D-4EC8-9DBA-208C919F146D}"
+      DTS:ObjectName="LocalHost.ME_AdventureWorksDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=ME_AdventureWorksDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{E30064F3-069D-4EC8-9DBA-208C919F146D}LocalHost.ME_AdventureWorksDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT DIM_Date"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F860702C-25E0-40E0-9529-F07B61DDE41E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT DIM_Date"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT DIM_Date\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT DIM_Date\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.ME_AdventureWorksDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.ME_AdventureWorksDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                    <inputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FullDateAlternateKey]"
+                      cachedDataType="dbDate"
+                      cachedName="FullDateAlternateKey"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[full_date]"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullDateAlternateKey]" />
+                    <inputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CalendarYear]"
+                      cachedDataType="i2"
+                      cachedName="CalendarYear"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_year]"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarYear]" />
+                    <inputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CalendarQuarter]"
+                      cachedDataType="ui1"
+                      cachedName="CalendarQuarter"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_quarter]"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarQuarter]" />
+                    <inputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MonthNumberOfYear]"
+                      cachedDataType="ui1"
+                      cachedName="MonthNumberOfYear"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_num]"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthNumberOfYear]" />
+                    <inputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EnglishMonthName]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="EnglishMonthName"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_name]"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[EnglishMonthName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      dataType="i4"
+                      name="date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[full_date]"
+                      dataType="dbDate"
+                      name="full_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_year]"
+                      dataType="i4"
+                      name="calendar_year" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_quarter]"
+                      dataType="i4"
+                      name="calendar_quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_num]"
+                      dataType="i4"
+                      name="calendar_month_num" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_name]"
+                      dataType="wstr"
+                      length="15"
+                      name="calendar_month_name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT DIM_Date\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT DIM_Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT DIM_Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT DIM_Date\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select DateKey, FullDateAlternateKey, CalendarYear, CalendarQuarter, MonthNumberOfYear, EnglishMonthName from [AdventureWorksDW2019].[dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT DIM_Date\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AdventureWorksDW2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AdventureWorksDW2019]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullDateAlternateKey]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullDateAlternateKey]"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullDateAlternateKey]"
+                      name="FullDateAlternateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarYear]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalendarYear]"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarYear]"
+                      name="CalendarYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarQuarter]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalendarQuarter]"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarQuarter]"
+                      name="CalendarQuarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthNumberOfYear]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MonthNumberOfYear]"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthNumberOfYear]"
+                      name="MonthNumberOfYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[EnglishMonthName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EnglishMonthName]"
+                      length="10"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[EnglishMonthName]"
+                      name="EnglishMonthName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullDateAlternateKey]"
+                      dataType="dbDate"
+                      name="FullDateAlternateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalendarYear]"
+                      dataType="i2"
+                      name="CalendarYear" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalendarQuarter]"
+                      dataType="ui1"
+                      name="CalendarQuarter" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MonthNumberOfYear]"
+                      dataType="ui1"
+                      name="MonthNumberOfYear" />
+                    <externalMetadataColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EnglishMonthName]"
+                      dataType="wstr"
+                      length="10"
+                      name="EnglishMonthName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullDateAlternateKey]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullDateAlternateKey]"
+                      name="FullDateAlternateKey" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalendarYear]"
+                      dataType="i2"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalendarYear]"
+                      name="CalendarYear" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalendarQuarter]"
+                      dataType="ui1"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalendarQuarter]"
+                      name="CalendarQuarter" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MonthNumberOfYear]"
+                      dataType="ui1"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MonthNumberOfYear]"
+                      name="MonthNumberOfYear" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EnglishMonthName]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EnglishMonthName]"
+                      name="EnglishMonthName" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT DIM_Date.Paths[OLE DB Source Output]"
+              endId="Package\DFT DIM_Date\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT DIM_Date\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\DFT DIM_Date"
+          TopLeft="240.833323763477,84.0666673347685" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT DIM_Date">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DFT DIM_Date\OLE DB Source"
+          TopLeft="349.166652792031,73.6666672521167" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFT DIM_Date\OLE DB Destination"
+          TopLeft="335.833319988516,228.800001818339" />
+        <EdgeLayout
+          Id="Package\DFT DIM_Date.Paths[OLE DB Source Output]"
+          TopLeft="423.299986390273,115.266667252117">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,113.533334566222"
+              Start="0,0"
+              End="0,106.033334566222">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,106.033334566222" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT DIM_Date\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT DIM_Date\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
